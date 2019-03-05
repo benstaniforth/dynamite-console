@@ -5,6 +5,7 @@ import com.softwire.dynamite.game.Gamestate;
 import com.softwire.dynamite.game.Move;
 import com.softwire.dynamite.game.Round;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CleverBot implements Bot {
@@ -38,8 +39,3 @@ public class CleverBot implements Bot {
     }
 
 }
-
-
-
-
-//        return gamestate.getRounds()[gamestate.getRounds().length - 1].getP2();
