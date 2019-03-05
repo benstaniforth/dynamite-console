@@ -65,5 +65,7 @@ See what strategies you can come up with. Some things to think about:
  - When to use randomness and when to do something deliberate.
 
  - When is the best time to use your dynamites? Can you predict when your opponent will use dynamite and play water balloon?
+ 
+ - Remember not to use more than 100 dynamites!
 
 Remember that your bot must implement the `Bot` interface to be accepted by the program. This just means that your bot needs a `makeMove` method that accepts the game state as an input and returns the next move to make.
