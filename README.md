@@ -2,8 +2,6 @@
 
 This project is designed to help you create and prototype bots that play [Dynamite](https://dynamite.softwire.com/).
 
-Start by creating an account there - it might take a while for your registration to come through so it's worth doing today even if we won't actually need your account until later on.
-
 ## Rules
 
 The rules of Dynamite are very simple. Dynamite is based on Rock-Paper-Scissors. Scissors beats Paper, which beats Rock, which beat Scissors. The game is played until one player has 1000 points.
