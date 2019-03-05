@@ -1,6 +1,5 @@
 package com.training;
 
-import com.training.bots.ExceptionBot;
 import com.training.bots.RockBot;
 import com.training.bots.UserBot;
 import com.training.runners.GameResult;
@@ -11,10 +10,15 @@ import java.util.Optional;
 public class Main {
 
     public static void main(String[] args) {
+
+        /////////// EDIT THIS CODE TO CHANGE THE RULES OF THE GAME AND TO CHANGE WHICH BOTS ARE USED /////////////
+
         Config gameConfig = new Config(1000, 100, 2500);
         GameRunner runner = new GameRunner(gameConfig, new UserBot(), new RockBot());
-        Optional<GameResult> result;
 
+        /////////// EDIT THIS CODE TO CHANGE THE RULES OF THE GAME AND TO CHANGE WHICH BOTS ARE USED /////////////
+
+        Optional<GameResult> result;
         do {
             result = runner.playRound();
         } while (!result.isPresent());
