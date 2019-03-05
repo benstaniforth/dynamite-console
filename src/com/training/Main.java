@@ -13,7 +13,7 @@ public class Main {
         /////////// EDIT THIS CODE TO CHANGE THE RULES OF THE GAME AND TO CHANGE WHICH BOTS ARE USED /////////////
 
         Config gameConfig = new Config(1000, 100, 2500);
-        GameRunner runner = new GameRunner(gameConfig, new EagerBot(), new RockBot());
+        GameRunner runner = new GameRunner(gameConfig, new CleverBot(), new RandoBot());
 
         /////////// EDIT THIS CODE TO CHANGE THE RULES OF THE GAME AND TO CHANGE WHICH BOTS ARE USED /////////////
 
