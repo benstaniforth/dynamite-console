@@ -1,5 +1,6 @@
 package com.training;
 
+import com.training.bots.RandoBot;
 import com.training.bots.RockBot;
 import com.training.bots.ScissorsBot;
 import com.training.bots.UserBot;
@@ -15,7 +16,7 @@ public class Main {
         /////////// EDIT THIS CODE TO CHANGE THE RULES OF THE GAME AND TO CHANGE WHICH BOTS ARE USED /////////////
 
         Config gameConfig = new Config(1000, 100, 2500);
-        GameRunner runner = new GameRunner(gameConfig, new ScissorsBot(), new RockBot());
+        GameRunner runner = new GameRunner(gameConfig, new RandoBot(), new RockBot());
 
         /////////// EDIT THIS CODE TO CHANGE THE RULES OF THE GAME AND TO CHANGE WHICH BOTS ARE USED /////////////
 
