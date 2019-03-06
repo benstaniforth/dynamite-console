@@ -71,50 +71,50 @@ public class YouveBotToBeKiddingMe implements Bot {
             return Move.S;
         }
 
-        //Joel Dynamite counter
-        if (((lastRound.getP1() == (lastRound.getP2())) && (twoRoundsAgo.getP1() == twoRoundsAgo.getP2())) && (dynamitesRemaining > 0)){
-            dynamitesRemaining--;
-            return Move.D;
-        }
-
         //Triple draw counter
         if (((lastRound.getP1() == (lastRound.getP2())) && (twoRoundsAgo.getP1() == twoRoundsAgo.getP2())
                 && (threeRoundsAgo.getP1() == threeRoundsAgo.getP2()))){
             return Move.W;
         }
 
+        //Joel Dynamite counter
+        if (((lastRound.getP1() == (lastRound.getP2())) && (twoRoundsAgo.getP1() == twoRoundsAgo.getP2())) && (dynamitesRemaining > 0)){
+            dynamitesRemaining--;
+            return Move.D;
+        }
+
         // RSP loop counter - play paper
-        if ((lastRound.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.S) && (threeRoundsAgo.getP2() == Move.P)){
+        if ((threeRoundsAgo.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.S) && (lastRound.getP2() == Move.P)){
             roundsPlayedSoFar++;
             return Move.P;
         }
 
         // RPS loop counter - play paper
-        if ((lastRound.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.P) && (threeRoundsAgo.getP2() == Move.S)){
+        if ((threeRoundsAgo.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.P) && (lastRound.getP2() == Move.S)){
             roundsPlayedSoFar++;
             return Move.P;
         }
 
         // PRS loop counter - play rock
-        if ((lastRound.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.R) && (threeRoundsAgo.getP2() == Move.S)){
+        if ((threeRoundsAgo.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.R) && (lastRound.getP2() == Move.S)){
             roundsPlayedSoFar++;
-            return Move.R;
+            return Move.S;
         }
 
         // PSR loop counter - play rock
-        if ((lastRound.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.S) && (threeRoundsAgo.getP2() == Move.R)){
+        if ((threeRoundsAgo.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.S) && (lastRound.getP2() == Move.R)){
             roundsPlayedSoFar++;
-            return Move.R;
+            return Move.S;
         }
 
         // SPR loop counter - play rock
-        if ((lastRound.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.P) && (threeRoundsAgo.getP2() == Move.R)){
+        if ((threeRoundsAgo.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.P) && (lastRound.getP2() == Move.R)){
             roundsPlayedSoFar++;
             return Move.R;
         }
 
         // SRP loop counter - play rock
-        if ((lastRound.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.R) && (threeRoundsAgo.getP2() == Move.P)){
+        if ((threeRoundsAgo.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.R) && (lastRound.getP2() == Move.P)){
             roundsPlayedSoFar++;
             return Move.R;
         }
