@@ -22,28 +22,45 @@ public class YouveBotToBeKiddingMe implements Bot {
     @Override
     public Move makeMove(Gamestate gamestate) {
 
+        List<Move> moveList = new ArrayList<>(Arrays.asList(Move.R,Move.P,Move.S));
+
         List<Round> roundsPlayed = gamestate.getRounds();
         int numberOfRounds = roundsPlayed.size();
 
-        if (gamestate.getRounds().isEmpty()){
-            return Move.S;
+        if (numberOfRounds < 3){
+            return moveList.get(randomNumber(moveList.size()));
         }
 
         List<Round> rounds = gamestate.getRounds();
         Round lastRound = rounds.get(rounds.size()-1);
+        Round twoRoundsAgo = rounds.get(rounds.size()-2);
+        Round threeRoundsAgo = rounds.get(rounds.size()-3);
 
-        if ((numberOfRounds % 3 == 0) && (lastRound.getP2() == Move.S)){
+        if ((lastRound.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.S) && (threeRoundsAgo.getP2() == Move.S)){
+            return Move.R;
+        }
+
+        if ((lastRound.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.R) && (threeRoundsAgo.getP2() == Move.R)){
+            return Move.P;
+        }
+
+        if ((lastRound.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.P) && (threeRoundsAgo.getP2() == Move.P)){
+            return Move.S;
+        }
+
+
+        if ((numberOfRounds % 8 == 0) && (dynamitesRemaining > 0)){
+            dynamitesRemaining--;
+            return Move.D;
+        } else if ((numberOfRounds % 3 == 0) && (lastRound.getP2() == Move.S)){
             return Move.R;
         } else if ((numberOfRounds % 3 == 1) && (lastRound.getP2() == Move.P)){
             return Move.S;
         } else if ((numberOfRounds % 3 == 2) && (lastRound.getP2() == Move.R)){
             return Move.P;
-        } else if ((numberOfRounds % 8 == 0) && (dynamitesRemaining > 0)){
-            dynamitesRemaining--;
-            return Move.D;
         }
 
-        List<Move> moveList = new ArrayList<>(Arrays.asList(Move.R,Move.P, Move.S));
+
         return moveList.get(randomNumber(moveList.size()));
 
     }
