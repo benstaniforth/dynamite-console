@@ -39,33 +39,84 @@ public class YouveBotToBeKiddingMe implements Bot {
 
 
         if (((lastRound.getP1() == (Move.R)) && (lastRound.getP2() == Move.S))
-            || ((lastRound.getP1() == (Move.P)) && (lastRound.getP2() == Move.R))
+                || ((lastRound.getP1() == (Move.P)) && (lastRound.getP2() == Move.R))
                 || ((lastRound.getP1() == (Move.S)) && (lastRound.getP2() == Move.P))
-                    || ((lastRound.getP1() == (Move.D)) && (lastRound.getP2() != Move.W) && (lastRound.getP2() != Move.D))){
+                || ((lastRound.getP1() == (Move.D)) && (lastRound.getP2() != Move.W) && (lastRound.getP2() != Move.D))){
             myScore++;
         }
 
         if (((lastRound.getP2() == (Move.R)) && (lastRound.getP1() == Move.S))
                 || ((lastRound.getP2() == (Move.P)) && (lastRound.getP1() == Move.R))
-                    || ((lastRound.getP2() == (Move.S)) && (lastRound.getP1() == Move.P))
-                        || ((lastRound.getP2() == (Move.D)) && (lastRound.getP1() != Move.W) && (lastRound.getP1() != Move.D))){
+                || ((lastRound.getP2() == (Move.S)) && (lastRound.getP1() == Move.P))
+                || ((lastRound.getP2() == (Move.D)) && (lastRound.getP1() != Move.W) && (lastRound.getP1() != Move.D))){
             oppoScore++;
         }
 
 
+        // Rock Loop to counter Scissors
         if ((lastRound.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.S) && (threeRoundsAgo.getP2() == Move.S)){
             roundsPlayedSoFar++;
             return Move.R;
         }
 
+        // Paper loop to counter Rock
         if ((lastRound.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.R) && (threeRoundsAgo.getP2() == Move.R)){
             roundsPlayedSoFar++;
             return Move.P;
         }
 
+        // Scissors loop to counter Paper
         if ((lastRound.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.P) && (threeRoundsAgo.getP2() == Move.P)){
             roundsPlayedSoFar++;
             return Move.S;
+        }
+
+        //Joel Dynamite counter
+        if (((lastRound.getP1() == (lastRound.getP2())) && (twoRoundsAgo.getP1() == twoRoundsAgo.getP2())) && (dynamitesRemaining > 0)){
+            dynamitesRemaining--;
+            return Move.D;
+        }
+
+        //Triple draw counter
+        if (((lastRound.getP1() == (lastRound.getP2())) && (twoRoundsAgo.getP1() == twoRoundsAgo.getP2())
+                && (threeRoundsAgo.getP1() == threeRoundsAgo.getP2()))){
+            return Move.W;
+        }
+
+        // RSP loop counter - play paper
+        if ((lastRound.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.S) && (threeRoundsAgo.getP2() == Move.P)){
+            roundsPlayedSoFar++;
+            return Move.P;
+        }
+
+        // RPS loop counter - play paper
+        if ((lastRound.getP2() == Move.R) && (twoRoundsAgo.getP2() == Move.P) && (threeRoundsAgo.getP2() == Move.S)){
+            roundsPlayedSoFar++;
+            return Move.P;
+        }
+
+        // PRS loop counter - play rock
+        if ((lastRound.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.R) && (threeRoundsAgo.getP2() == Move.S)){
+            roundsPlayedSoFar++;
+            return Move.R;
+        }
+
+        // PSR loop counter - play rock
+        if ((lastRound.getP2() == Move.P) && (twoRoundsAgo.getP2() == Move.S) && (threeRoundsAgo.getP2() == Move.R)){
+            roundsPlayedSoFar++;
+            return Move.R;
+        }
+
+        // SPR loop counter - play rock
+        if ((lastRound.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.P) && (threeRoundsAgo.getP2() == Move.R)){
+            roundsPlayedSoFar++;
+            return Move.R;
+        }
+
+        // SRP loop counter - play rock
+        if ((lastRound.getP2() == Move.S) && (twoRoundsAgo.getP2() == Move.R) && (threeRoundsAgo.getP2() == Move.P)){
+            roundsPlayedSoFar++;
+            return Move.R;
         }
 
 
@@ -87,7 +138,6 @@ public class YouveBotToBeKiddingMe implements Bot {
             return Move.P;
         }
 
-
         return moveList.get(randomNumber(moveList.size()));
 
     }
@@ -101,11 +151,11 @@ public class YouveBotToBeKiddingMe implements Bot {
 
     }
 
-        private int myScore;
-        private int roundsPlayedSoFar;
-        private int oppoScore;
+    private int myScore;
+    private int roundsPlayedSoFar;
+    private int oppoScore;
 
-    public YouveBotToBeKiddingMe (int scoreTracker) {
+    public YouveBotToBeKiddingMe(int scoreTracker) {
         this.myScore = 0;
         this.roundsPlayedSoFar = 0;
         this.oppoScore = 0;
